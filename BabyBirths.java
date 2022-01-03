@@ -3,7 +3,7 @@ import java.io.*;
 import org.apache.commons.csv.*;
 
 public class BabyBirths {
-    int totalBirths;
+    int totalBirths, totalGirls, totalBoys, totalGirlNames, totalBoyNames;
     public void printNames() {
         
         FileResource fr = new FileResource();
@@ -19,10 +19,10 @@ public class BabyBirths {
     
     public void totalBirths (FileResource fr) {
         totalBirths = 0;
-        int totalGirls = 0;
-        int totalBoys = 0;
-        int totalGirlNames = 0;
-        int totalBoyNames = 0;
+        totalGirls = 0;
+        totalBoys = 0;
+        totalGirlNames = 0;
+        totalBoyNames = 0;
         for(CSVRecord record : fr.getCSVParser(false)) {
             int numBorn = Integer.parseInt(record.get(2));
             totalBirths += numBorn;
@@ -34,12 +34,7 @@ public class BabyBirths {
                 totalGirls += numBorn;
                 totalGirlNames++;
             }
-        }
-        System.out.println("Total Births: " + totalBirths);
-        System.out.println("Total Girls: " + totalGirls);
-        System.out.println("Total Girls' Names: " + totalGirlNames);
-        System.out.println("Total Boys: " + totalBoys);
-        System.out.println("Total Boys' Names: " + totalBoyNames);
+        };
     }
     
     public void testTotalBirths () {
