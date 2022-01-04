@@ -89,12 +89,13 @@ public class BabyBirths {
         System.out.println(getName(1980, 350, "F"));
     }
     
-    public void whatIsNameInYear (String name, int year, int newYear, String gender) {
+    public String whatIsNameInYear (String name, int year, int newYear, String gender) {
         int rank = getRank(year, name, gender);
         System.out.println(rank);
         String newName = getName(newYear, rank, gender);
         System.out.println(getRank(newYear, newName, gender));
         System.out.println(name + " born in " + year + " would be " + newName + " if she was born in " + newYear + ".");
+        return newName;
     }
     
     public void testWhatIsNameInYear () {

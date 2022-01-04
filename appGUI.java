@@ -114,7 +114,6 @@ public class appGUI extends Application
         ChoiceBox <Integer> yearChoiceGetRank = new ChoiceBox();
         yearChoiceGetRank.setValue(1880);
         yearChoiceGetRank.getItems().addAll(years);
-        
         Text genderTextGetRank = new Text("Gender");
         ToggleGroup genderGetRank = new ToggleGroup();
         RadioButton maleRadioGetRank = new RadioButton("Male");
@@ -156,7 +155,131 @@ public class appGUI extends Application
         //check the name of the person in a specific year
         Text nameSpcYear = new Text("Name ");
         TextField nameFieldSpcYear = new TextField();
+        Text birthYearText = new Text("Birth Year: ");
+        ChoiceBox <Integer> birthYear = new ChoiceBox();
+        birthYear.setValue(1880);
+        birthYear.getItems().addAll(years);
+        Text yearText = new Text("Year: ");
+        ChoiceBox <Integer> yearSpcYear = new ChoiceBox();
+        yearSpcYear.setValue(1880);
+        yearSpcYear.getItems().addAll(years);
+        Text genderSpcYear = new Text("Gender");
+        ToggleGroup genderSpcYearToggle = new ToggleGroup();
+        RadioButton maleRadioSpcYear = new RadioButton("Male");
+        maleRadioGetRank.setToggleGroup(genderSpcYearToggle);
+        RadioButton femaleRadioSpcYear = new RadioButton("Female");
+        femaleRadioGetRank.setToggleGroup(genderSpcYearToggle);
+        GridPane genderChoiceSpcYear = new GridPane();
+        genderChoiceSpcYear.add(maleRadioSpcYear, 0,0);
+        genderChoiceSpcYear.add(femaleRadioSpcYear, 1,0);
+        Button getNameSpcYear = new Button("Get Name");
+        getNameSpcYear.setOnAction(new EventHandler <ActionEvent>(){
+            @Override
+            public void handle(ActionEvent e){
+                //Create new stage to display the name corresponding to the given rank
+                Stage dispNameSpcYear = new Stage();
+                dispNameSpcYear.setTitle("Name");
+                String sex = ""; 
+                if(maleRadioSpcYear.isSelected()){
+                    sex = "M";
+                }
+                else if(femaleRadioSpcYear.isSelected()){
+                    sex = "F";
+                }
+                Text nameText = new Text("Name: " + nameFieldSpcYear.getText());
+                Text yearText = new Text("Birth Year: " + birthYear.getValue());
+                Text genderText = new Text("Gender: " + sex);
+                Text nameTextSpcYear = new Text("Your name in the year " + yearSpcYear.getValue() + " will be " +
+                           baby.whatIsNameInYear(nameFieldSpcYear.getText(), birthYear.getValue(), yearSpcYear.getValue(),sex));
+                GridPane nameGrid = new GridPane();
+                nameGrid.add(nameText, 0, 0);
+                nameGrid.add(yearText, 0, 1);
+                nameGrid.add(genderText, 0, 2);
+                nameGrid.add(nameTextSpcYear, 0, 3);
+                Scene spcNameScene = new Scene(nameGrid);
+                dispNameSpcYear.setScene(spcNameScene);
+                dispNameSpcYear.show();
+            }
+        });
         
+        
+        //average rank of a name
+        Text nameAvgRank = new Text("Name ");
+        TextField nameFieldAvgRank = new TextField();
+        Text genderAvgRank = new Text("Gender");
+        ToggleGroup genderAvgRankToggle = new ToggleGroup();
+        RadioButton maleRadioAvgRank = new RadioButton("Male");
+        maleRadioAvgRank.setToggleGroup(genderAvgRankToggle);
+        RadioButton femaleRadioAvgRank = new RadioButton("Female");
+        femaleRadioAvgRank.setToggleGroup(genderAvgRankToggle);
+        GridPane genderChoiceAvgRank = new GridPane();
+        genderChoiceAvgRank.add(maleRadioAvgRank, 0,0);
+        genderChoiceAvgRank.add(femaleRadioAvgRank, 1,0);
+        Button getAvgRank = new Button("Get Average Rank");
+        getAvgRank.setOnAction(new EventHandler <ActionEvent>(){
+            @Override
+            public void handle(ActionEvent e){
+                //Create new stage to display the name corresponding to the given rank
+                Stage dispAvgRank = new Stage();
+                dispAvgRank.setTitle("Average Rank");
+                String sex = ""; 
+                if(maleRadioAvgRank.isSelected()){
+                    sex = "M";
+                }
+                else if(femaleRadioAvgRank.isSelected()){
+                    sex = "F";
+                }
+                Text nameText = new Text("Name: " + nameFieldAvgRank.getText());
+                Text genderText = new Text("Gender: " + sex);
+                Text avgRank = new Text("Average Rank: " + baby.getAverageRank(nameFieldAvgRank.getText(), sex));
+                GridPane avgGrid = new GridPane();
+                avgGrid.add(nameText, 0, 0);
+                avgGrid.add(genderText, 0, 1);
+                avgGrid.add(avgRank, 0, 2);
+                Scene avgRankScene = new Scene(avgGrid);
+                dispAvgRank.setScene(avgRankScene);
+                dispAvgRank.show();
+            }
+        });
+        
+        //find the year of the highest rank of a name
+        Text nameHighestRank = new Text("Name ");
+        TextField nameFieldHighestRank = new TextField();
+        Text genderHighestRank = new Text("Gender");
+        ToggleGroup genderHighestRankToggle = new ToggleGroup();
+        RadioButton maleRadioHighestRank = new RadioButton("Male");
+        maleRadioHighestRank.setToggleGroup(genderHighestRankToggle);
+        RadioButton femaleRadioHighestRank = new RadioButton("Female");
+        femaleRadioHighestRank.setToggleGroup(genderHighestRankToggle);
+        GridPane genderChoiceHighestRank = new GridPane();
+        genderChoiceHighestRank.add(maleRadioHighestRank, 0,0);
+        genderChoiceHighestRank.add(femaleRadioHighestRank, 1,0);
+        Button getYear = new Button("Get Year");
+        getYear.setOnAction(new EventHandler <ActionEvent>(){
+            @Override
+            public void handle(ActionEvent e){
+                //Create new stage to display the name corresponding to the given rank
+                Stage highestYearRank = new Stage();
+                highestYearRank.setTitle("Highest Rank");
+                String sex = ""; 
+                if(maleRadioHighestRank.isSelected()){
+                    sex = "M";
+                }
+                else if(femaleRadioHighestRank.isSelected()){
+                    sex = "F";
+                }
+                Text nameText = new Text("Name: " + nameFieldHighestRank.getText());
+                Text genderText = new Text("Gender: " + sex);
+                Text highestYear = new Text("Year with the Highest Rank : " + baby.yearOfHighestRank(nameFieldAvgRank.getText(), sex));
+                GridPane rankGrid = new GridPane();
+                rankGrid.add(nameText, 0, 0);
+                rankGrid.add(genderText, 0, 1);
+                rankGrid.add(highestYear, 0, 2);
+                Scene highestRankScene = new Scene(rankGrid);
+                highestYearRank.setScene(highestRankScene);
+                highestYearRank.show();
+            }
+        });
         
         GridPane gridPane = new GridPane(); 
         gridPane.add(totalBirths, 0, 0);
@@ -174,6 +297,25 @@ public class appGUI extends Application
         gridPane.add(genderTextGetRank, 0,8);
         gridPane.add(genderChoiceGetRank, 1,9);
         gridPane.add(getName, 1,10);
+        gridPane.add(nameSpcYear, 0, 11);
+        gridPane.add(nameFieldSpcYear, 1, 11);
+        gridPane.add(birthYearText, 0, 12);
+        gridPane.add(birthYear, 1, 12);
+        gridPane.add(yearText, 0, 13);
+        gridPane.add(yearSpcYear, 1, 13);
+        gridPane.add(genderSpcYear, 0, 14);
+        gridPane.add(genderChoiceSpcYear, 1, 14);
+        gridPane.add(getNameSpcYear, 1, 15);
+        gridPane.add(nameAvgRank, 0, 16);
+        gridPane.add(nameFieldAvgRank, 1, 16);
+        gridPane.add(genderAvgRank, 0, 17);
+        gridPane.add(genderChoiceAvgRank, 1, 17);
+        gridPane.add(getAvgRank, 1, 18);        
+        gridPane.add(nameHighestRank, 0, 19);
+        gridPane.add(nameFieldHighestRank, 1, 19);
+        gridPane.add(genderHighestRank, 0, 20);
+        gridPane.add(genderChoiceHighestRank, 1, 20);
+        gridPane.add(getYear, 1, 21);
         
         Scene scene = new Scene(gridPane);
         stage.setScene(scene);        
