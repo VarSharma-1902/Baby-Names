@@ -8,6 +8,11 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.text.Text;
 import java.util.*;
+import javafx.scene.shape.*;
+import javafx.scene.paint.Color;
+import javafx.scene.control.ScrollBar;
+import javafx.geometry.Orientation;  
+import javafx.scene.Group;
 
 public class appGUI extends Application
 {
@@ -31,9 +36,8 @@ public class appGUI extends Application
                                         2010 , 2011 , 2012 , 2013 , 2014);
         
         stage.setTitle("Baby Names");
-        stage.setWidth(500);
-        stage.setHeight(500);
         
+        //total births
         //button to calculate the total births
         Button totalBirths = new Button("Total Births");
         totalBirths.setOnAction(new EventHandler<ActionEvent>(){
@@ -59,6 +63,14 @@ public class appGUI extends Application
                 births.show();
             }
         });
+        
+        //total birth styling
+        Rectangle rectTotalBirths = new Rectangle(200,200);
+        rectTotalBirths.setFill(Color.TRANSPARENT);
+        rectTotalBirths.setStroke(Color.BLACK);
+        GridPane rectGridTotalBirths = new GridPane();
+        rectGridTotalBirths.add(totalBirths,1,1);
+        rectGridTotalBirths.setPadding(new Insets(10,10,10,10));
         
         //read a name and display it's rank in a particular year
         Text name = new Text("Name");
@@ -107,6 +119,19 @@ public class appGUI extends Application
             }
         });
         
+        Rectangle rectGetRank = new Rectangle(200,200);
+        rectGetRank.setFill(Color.TRANSPARENT);
+        rectGetRank.setStroke(Color.BLACK);
+        GridPane rectGridGetRank = new GridPane();
+        rectGridGetRank.add(name, 0, 1);
+        rectGridGetRank.add(nameField, 1, 1);
+        rectGridGetRank.add(year, 0, 2);
+        rectGridGetRank.add(yearChoice, 1, 2);
+        rectGridGetRank.add(genderText, 0,3);
+        rectGridGetRank.add(genderChoice, 1,3);
+        rectGridGetRank.add(getRank, 1, 4);
+        
+        
         //get the rank of a particular name
         Text readRank = new Text("Rank");
         TextField rankField = new TextField();
@@ -151,6 +176,18 @@ public class appGUI extends Application
                 dispName.show();
             }
         });
+        
+        Rectangle rectGetName = new Rectangle(200,200);
+        rectGetName.setFill(Color.TRANSPARENT);
+        rectGetName.setStroke(Color.BLACK);
+        GridPane rectGridGetName = new GridPane();
+        rectGridGetName.add(readRank, 0,5);
+        rectGridGetName.add(rankField, 1,5);
+        rectGridGetName.add(yearGetRank, 0, 6);
+        rectGridGetName.add(yearChoiceGetRank, 1, 7);
+        rectGridGetName.add(genderTextGetRank, 0,8);
+        rectGridGetName.add(genderChoiceGetRank, 1,9);
+        rectGridGetName.add(getName, 1,10);
         
         //check the name of the person in a specific year
         Text nameSpcYear = new Text("Name ");
@@ -202,6 +239,19 @@ public class appGUI extends Application
             }
         });
         
+        Rectangle rectGetNameSpcYear = new Rectangle(200,200);
+        rectGetNameSpcYear.setFill(Color.TRANSPARENT);
+        rectGetNameSpcYear.setStroke(Color.BLACK);
+        GridPane rectGridGetNameSpcYear = new GridPane();
+        rectGridGetNameSpcYear.add(nameSpcYear, 0, 11);
+        rectGridGetNameSpcYear.add(nameFieldSpcYear, 1, 11);
+        rectGridGetNameSpcYear.add(birthYearText, 0, 12);
+        rectGridGetNameSpcYear.add(birthYear, 1, 12);
+        rectGridGetNameSpcYear.add(yearText, 0, 13);
+        rectGridGetNameSpcYear.add(yearSpcYear, 1, 13);
+        rectGridGetNameSpcYear.add(genderSpcYear, 0, 14);
+        rectGridGetNameSpcYear.add(genderChoiceSpcYear, 1, 14);
+        rectGridGetNameSpcYear.add(getNameSpcYear, 1, 15);
         
         //average rank of a name
         Text nameAvgRank = new Text("Name ");
@@ -242,6 +292,16 @@ public class appGUI extends Application
             }
         });
         
+        Rectangle rectAvgRank = new Rectangle(200,200);
+        rectAvgRank.setFill(Color.TRANSPARENT);
+        rectAvgRank.setStroke(Color.BLACK);
+        GridPane rectGridAvgRank = new GridPane();
+        rectGridAvgRank.add(nameAvgRank, 0, 16);
+        rectGridAvgRank.add(nameFieldAvgRank, 1, 16);
+        rectGridAvgRank.add(genderAvgRank, 0, 17);
+        rectGridAvgRank.add(genderChoiceAvgRank, 1, 17);
+        rectGridAvgRank.add(getAvgRank, 1, 18);     
+        
         //find the year of the highest rank of a name
         Text nameHighestRank = new Text("Name ");
         TextField nameFieldHighestRank = new TextField();
@@ -270,7 +330,7 @@ public class appGUI extends Application
                 }
                 Text nameText = new Text("Name: " + nameFieldHighestRank.getText());
                 Text genderText = new Text("Gender: " + sex);
-                Text highestYear = new Text("Year with the Highest Rank : " + baby.yearOfHighestRank(nameFieldAvgRank.getText(), sex));
+                Text highestYear = new Text("Year with the Highest Rank : " + baby.yearOfHighestRank(nameFieldHighestRank.getText(), sex));
                 GridPane rankGrid = new GridPane();
                 rankGrid.add(nameText, 0, 0);
                 rankGrid.add(genderText, 0, 1);
@@ -281,41 +341,42 @@ public class appGUI extends Application
             }
         });
         
+        Rectangle rectGetYear = new Rectangle(200,200);
+        rectGetYear.setFill(Color.TRANSPARENT);
+        rectGetYear.setStroke(Color.BLACK);
+        GridPane rectGridGetYear = new GridPane();
+        rectGridGetYear.add(nameHighestRank, 0, 19);
+        rectGridGetYear.add(nameFieldHighestRank, 1, 19);
+        rectGridGetYear.add(genderHighestRank, 0, 20);
+        rectGridGetYear.add(genderChoiceHighestRank, 1, 20);
+        rectGridGetYear.add(getYear, 1, 21);
+       
+        
         GridPane gridPane = new GridPane(); 
-        gridPane.add(totalBirths, 0, 0);
-        gridPane.add(name, 0, 1);
-        gridPane.add(nameField, 1, 1);
-        gridPane.add(year, 0, 2);
-        gridPane.add(yearChoice, 1, 2);
-        gridPane.add(genderText, 0,3);
-        gridPane.add(genderChoice, 1,3);
-        gridPane.add(getRank, 1, 4);
-        gridPane.add(readRank, 0,5);
-        gridPane.add(rankField, 1,5);
-        gridPane.add(yearGetRank, 0, 6);
-        gridPane.add(yearChoiceGetRank, 1, 7);
-        gridPane.add(genderTextGetRank, 0,8);
-        gridPane.add(genderChoiceGetRank, 1,9);
-        gridPane.add(getName, 1,10);
-        gridPane.add(nameSpcYear, 0, 11);
-        gridPane.add(nameFieldSpcYear, 1, 11);
-        gridPane.add(birthYearText, 0, 12);
-        gridPane.add(birthYear, 1, 12);
-        gridPane.add(yearText, 0, 13);
-        gridPane.add(yearSpcYear, 1, 13);
-        gridPane.add(genderSpcYear, 0, 14);
-        gridPane.add(genderChoiceSpcYear, 1, 14);
-        gridPane.add(getNameSpcYear, 1, 15);
-        gridPane.add(nameAvgRank, 0, 16);
-        gridPane.add(nameFieldAvgRank, 1, 16);
-        gridPane.add(genderAvgRank, 0, 17);
-        gridPane.add(genderChoiceAvgRank, 1, 17);
-        gridPane.add(getAvgRank, 1, 18);        
-        gridPane.add(nameHighestRank, 0, 19);
-        gridPane.add(nameFieldHighestRank, 1, 19);
-        gridPane.add(genderHighestRank, 0, 20);
-        gridPane.add(genderChoiceHighestRank, 1, 20);
-        gridPane.add(getYear, 1, 21);
+        //gridPane styling
+        gridPane.setMinSize(400,200);
+        gridPane.setPadding(new Insets(10,10,10,10));
+        gridPane.setVgap(5);
+        gridPane.setHgap(5);
+        //gridPane adding elements
+        gridPane.add(rectTotalBirths, 0, 0);
+        gridPane.add(rectGridTotalBirths, 0, 0);
+        
+        gridPane.add(rectGetRank, 1, 0);
+        gridPane.add(rectGridGetRank, 1, 0);
+        
+        gridPane.add(rectGetName, 2, 0);
+        gridPane.add(rectGridGetName, 2, 0);
+        
+        gridPane.add(rectGetNameSpcYear, 0, 1);
+        gridPane.add(rectGridGetNameSpcYear, 0, 1);
+        
+        gridPane.add(rectAvgRank, 1, 1);
+        gridPane.add(rectGridAvgRank, 1, 1);
+           
+        gridPane.add(rectGetYear, 2, 1);
+        gridPane.add(rectGridGetYear, 2, 1);
+        
         
         Scene scene = new Scene(gridPane);
         stage.setScene(scene);        
