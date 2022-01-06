@@ -65,12 +65,12 @@ public class appGUI extends Application
         });
         
         //total birth styling
-        Rectangle rectTotalBirths = new Rectangle(200,200);
+        Rectangle rectTotalBirths = new Rectangle(300,300);
         rectTotalBirths.setFill(Color.TRANSPARENT);
         rectTotalBirths.setStroke(Color.BLACK);
         GridPane rectGridTotalBirths = new GridPane();
         rectGridTotalBirths.add(totalBirths,1,1);
-        rectGridTotalBirths.setPadding(new Insets(10,10,10,10));
+        rectGridTotalBirths.setPadding(new Insets(120,90,90,120));  //top, right, bottom, left
         
         //read a name and display it's rank in a particular year
         Text name = new Text("Name");
@@ -119,10 +119,15 @@ public class appGUI extends Application
             }
         });
         
-        Rectangle rectGetRank = new Rectangle(200,200);
+        Rectangle rectGetRank = new Rectangle(300,300);
         rectGetRank.setFill(Color.TRANSPARENT);
         rectGetRank.setStroke(Color.BLACK);
         GridPane rectGridGetRank = new GridPane();
+        //styling
+        rectGridGetRank.setHgap(5);
+        rectGridGetRank.setVgap(5);
+        rectGridGetRank.setPadding(new Insets(70,70,70,70));
+        //adding elements
         rectGridGetRank.add(name, 0, 1);
         rectGridGetRank.add(nameField, 1, 1);
         rectGridGetRank.add(year, 0, 2);
@@ -177,26 +182,32 @@ public class appGUI extends Application
             }
         });
         
-        Rectangle rectGetName = new Rectangle(200,200);
+        Rectangle rectGetName = new Rectangle(300,300);
         rectGetName.setFill(Color.TRANSPARENT);
         rectGetName.setStroke(Color.BLACK);
         GridPane rectGridGetName = new GridPane();
-        rectGridGetName.add(readRank, 0,5);
-        rectGridGetName.add(rankField, 1,5);
-        rectGridGetName.add(yearGetRank, 0, 6);
-        rectGridGetName.add(yearChoiceGetRank, 1, 7);
-        rectGridGetName.add(genderTextGetRank, 0,8);
-        rectGridGetName.add(genderChoiceGetRank, 1,9);
-        rectGridGetName.add(getName, 1,10);
+        //styling
+        rectGridGetName.setHgap(5);
+        rectGridGetName.setVgap(5);
+        rectGridGetName.setPadding(new Insets(70,50,70,70));
+        //adding elements
+        rectGridGetName.add(readRank, 0,0);
+        rectGridGetName.add(rankField, 1,0);
+        rectGridGetName.add(yearGetRank, 0, 1);
+        rectGridGetName.add(yearChoiceGetRank, 1, 1);
+        rectGridGetName.add(genderTextGetRank, 0,2);
+        rectGridGetName.add(genderChoiceGetRank, 1,2);
+        rectGridGetName.add(getName, 1,3);
+        
         
         //check the name of the person in a specific year
         Text nameSpcYear = new Text("Name ");
         TextField nameFieldSpcYear = new TextField();
-        Text birthYearText = new Text("Birth Year: ");
+        Text birthYearText = new Text("Birth Year ");
         ChoiceBox <Integer> birthYear = new ChoiceBox();
         birthYear.setValue(1880);
         birthYear.getItems().addAll(years);
-        Text yearText = new Text("Year: ");
+        Text yearText = new Text("Year ");
         ChoiceBox <Integer> yearSpcYear = new ChoiceBox();
         yearSpcYear.setValue(1880);
         yearSpcYear.getItems().addAll(years);
@@ -239,10 +250,15 @@ public class appGUI extends Application
             }
         });
         
-        Rectangle rectGetNameSpcYear = new Rectangle(200,200);
+        Rectangle rectGetNameSpcYear = new Rectangle(300,300);
         rectGetNameSpcYear.setFill(Color.TRANSPARENT);
         rectGetNameSpcYear.setStroke(Color.BLACK);
         GridPane rectGridGetNameSpcYear = new GridPane();
+        //styling
+        rectGridGetNameSpcYear.setHgap(5);
+        rectGridGetNameSpcYear.setVgap(5);
+        rectGridGetNameSpcYear.setPadding(new Insets(30,50,30,50));
+        //adding elements
         rectGridGetNameSpcYear.add(nameSpcYear, 0, 11);
         rectGridGetNameSpcYear.add(nameFieldSpcYear, 1, 11);
         rectGridGetNameSpcYear.add(birthYearText, 0, 12);
@@ -292,15 +308,20 @@ public class appGUI extends Application
             }
         });
         
-        Rectangle rectAvgRank = new Rectangle(200,200);
+        Rectangle rectAvgRank = new Rectangle(300,300);
         rectAvgRank.setFill(Color.TRANSPARENT);
         rectAvgRank.setStroke(Color.BLACK);
         GridPane rectGridAvgRank = new GridPane();
+        //styling
+        rectGridAvgRank.setHgap(5);
+        rectGridAvgRank.setVgap(5);
+        rectGridAvgRank.setPadding(new Insets(30,50,30,50));
+        //adding elements
         rectGridAvgRank.add(nameAvgRank, 0, 16);
         rectGridAvgRank.add(nameFieldAvgRank, 1, 16);
         rectGridAvgRank.add(genderAvgRank, 0, 17);
         rectGridAvgRank.add(genderChoiceAvgRank, 1, 17);
-        rectGridAvgRank.add(getAvgRank, 1, 18);     
+        rectGridAvgRank.add(getAvgRank, 1, 18);  
         
         //find the year of the highest rank of a name
         Text nameHighestRank = new Text("Name ");
@@ -341,23 +362,27 @@ public class appGUI extends Application
             }
         });
         
-        Rectangle rectGetYear = new Rectangle(200,200);
+        Rectangle rectGetYear = new Rectangle(300,300);
         rectGetYear.setFill(Color.TRANSPARENT);
         rectGetYear.setStroke(Color.BLACK);
         GridPane rectGridGetYear = new GridPane();
+        //styling
+        rectGridGetYear.setHgap(5);
+        rectGridGetYear.setVgap(5);
+        rectGridGetYear.setPadding(new Insets(30,50,30,50));   
+        //adding elements
         rectGridGetYear.add(nameHighestRank, 0, 19);
         rectGridGetYear.add(nameFieldHighestRank, 1, 19);
         rectGridGetYear.add(genderHighestRank, 0, 20);
         rectGridGetYear.add(genderChoiceHighestRank, 1, 20);
-        rectGridGetYear.add(getYear, 1, 21);
-       
+        rectGridGetYear.add(getYear, 1, 21); 
         
         GridPane gridPane = new GridPane(); 
         //gridPane styling
         gridPane.setMinSize(400,200);
         gridPane.setPadding(new Insets(10,10,10,10));
         gridPane.setVgap(5);
-        gridPane.setHgap(5);
+        //gridPane.setHgap(5);
         //gridPane adding elements
         gridPane.add(rectTotalBirths, 0, 0);
         gridPane.add(rectGridTotalBirths, 0, 0);
